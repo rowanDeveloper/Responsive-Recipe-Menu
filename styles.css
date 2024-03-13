@@ -1,0 +1,233 @@
+/* Google fonts */
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* root */
+:root {
+
+/* Primary */
+--nutmeg: hsl(14, 45%, 36%);
+--dark-raspberry: hsl(332, 51%, 32%);
+
+/* Neutral */
+--white: hsl(0, 0%, 100%);
+--rose-white: hsl(330, 100%, 98%);
+--eggshell: hsl(30, 54%, 90%);
+--light-grey: hsl(30, 18%, 87%);
+--wenge-brown: hsl(30, 10%, 34%);
+--dark-charcoal: hsl(24, 5%, 18%);
+
+--font-heading: 'Young Serif', serif;
+--font-paragraph: 'Outfit', sans-serif;
+--font-size-paragraph: 16px;
+}
+
+body {
+    color: var(--wenge-brown);
+    font-family: var(--font-paragraph);
+    font-size: var(--font-size-paragraph);
+}
+
+img {
+    width: 100%;
+}
+
+h1, h2 {
+    font-family: var(--font-heading);
+}
+
+ul, ol {
+    list-style: none;
+}
+
+p {
+    font-size: .875rem;
+    letter-spacing: .015rem;                                   /* Maybe, I don't know. I just tried to do a letter spacing */
+}
+
+.omelette-image {
+    display: none;
+}
+
+
+.container {
+    counter-reset: instruction;                                      
+    margin: 2.75rem 2rem;                                    /* Instead of 1.875rem -- It's 2.75rem top and bottom and 2rem left and right */                      
+    background-color:var(--white);
+}
+
+.omelette-image-mobile {
+    display: block;
+    width: 100%;
+}
+
+/* Constant classes */
+.section {
+    margin: 1.875rem 0;                                                  
+}
+
+.paragraph {
+    font-family: var(--font-paragraph);
+    line-height: 1.25rem;
+}
+
+.list_paragraph {
+    margin: 0.25rem 0;
+}
+
+.list-item{
+    display: grid;
+    grid-template-columns: auto 1fr;    
+    align-items: center;
+
+    line-height: 1.5rem; 
+}
+
+/* Because the bullets points has it own colors we create it using the ::before property */
+.list-item::before {
+    content: "";
+    display: block; 
+    width: 100%;
+    width: 0.25rem;
+    height: 0.25rem;
+    border-radius: 50%;
+    margin-right: 1.25rem;                               /* This is the margins between the bullets points and the paragraph */
+}
+
+.list-line:last-child {
+    padding-bottom: 1.5rem;                              /* I think is better to use a transform: translateY() */
+    border-bottom: 1px solid var(--light-grey);
+}
+
+.main-title {
+    margin-bottom: 2.25rem;
+    font-size: 1.95rem;
+    line-height: 2.5rem;
+    color: var(--dark-charcoal);
+}
+
+/* Preparation section */
+.preparation {
+    margin: 2.5rem 0;                                   /* The margin-top gives a separation from the section preparation and the paragraph */
+    padding: 1.625rem;
+    background-color: var(--rose-white);
+    border-radius: .5rem;
+}
+
+.third-title {
+    font-size: 1.2rem;
+    color: var(--dark-raspberry);
+    font-weight: 600;
+}
+
+.bold { 
+    font-weight: 600;
+}
+
+.preparation .list-item::before {
+    background-color: var(--dark-raspberry);
+}
+
+/* Ingredients section */
+.second-title {
+    font-size: 1.8rem;
+    color: var(--nutmeg);
+
+    margin-bottom: 1.5rem;                                              /* I think this is better rather than 1.875 */
+}
+
+.section_ingredients .list-item::before {
+    background-color: var(--nutmeg);
+}
+
+/* Instruction section */
+.ordered {
+    position: relative;
+}
+
+.ordered::before {
+    display: block;
+    position: absolute;
+    top: 0;
+    counter-increment: instruction;
+    content: counter(instruction) ".";
+    color: var(--nutmeg);
+    font-size: 1rem;
+    font-weight: bold;   
+}
+
+.content {
+    margin-left: 2rem;      
+    margin-bottom: 0.625rem;                                          /* The gap (margin-botton) between each paragraph can be a little more small. But, oh well */
+}
+
+/* Nutrition section */
+.nutrition {        
+    margin-bottom: 0;                                                 /* So we had an extra margin calc*/
+}       
+
+.nutrition .paragraph {
+    margin-bottom: 1.5rem;
+}
+
+.list-table {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: .5rem  2rem;
+    border-bottom: 1px solid var(--light-grey);
+}
+
+.list-table:last-child {
+   border-bottom: none;
+}
+
+.nutmeg {
+    color: var(--nutmeg);
+    font-weight: 600;
+}
+
+
+@media screen and (min-width: 740px){
+ 
+    body {
+        background-color: var(--eggshell);
+    }
+
+    .container {
+        margin: 7.5rem auto;
+        width: 100%;
+        max-width: 740px;
+        padding: 2.5rem;
+        background-color: var(--white);
+        border-radius: .5rem;
+    }
+
+    .omelette-image-mobile {
+        display: none;
+    }
+
+    .image-container {
+        border-radius: .5rem;
+    }
+
+    .omelette-image {
+        display: block;
+        width: 660px;
+        height: 300px;
+        border-radius: .5rem;
+    }
+
+    .main-title {
+        font-size: 2.5rem;
+    }
+    
+
+    
+}
+
